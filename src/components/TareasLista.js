@@ -1,4 +1,5 @@
 import React from "react";
+import "./TareasLista.css";
 
 const TareasLista = (props) => {
   return (

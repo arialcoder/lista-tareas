@@ -8,14 +8,15 @@ import "./styles.css";
 const App = () => {
   const tareas = [
     { texto: "Estudiar React.js", Completado: true },
-    { texto: "Node.js", Completado: false }
+    { texto: "Node.js", Completado: false },
+    { texto: "Crear repositorio github", Completado: false }
   ];
   return (
     <>
       <div className="App">
         <h1>Lista de Tareas</h1>
-        {/* <TareasContador /> */}
-        {/* <TareasBuscador /> */}
+        <TareasContador />
+        <TareasBuscador />
         <TareasLista>
           {tareas.map((tarea) => (
             <TareasItem
@@ -30,7 +31,7 @@ const App = () => {
         {/* <div className="card">
           <div className="top"></div>
           <div className="bottom">
-            <p>Tomar el curso de Introduccion de React.js</p>
+            <p>curso de Introduccion de React.js</p>
             <p></p>
           </div>
         </div> */}

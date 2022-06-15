@@ -1,6 +1,7 @@
 import React from "react";
+import "./CrearTareaBtn.css";
 
 const CrearTareaBtn = () => {
-  return <button className="btn"> + </button>;
+  return <button className="crearTareaBtn"> + </button>;
 };
 export { CrearTareaBtn };

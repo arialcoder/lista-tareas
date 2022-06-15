@@ -1,7 +1,7 @@
 import React from "react";
 
-const TareaContador = () => {
-  return <h2>Buscador</h2>;
+const TareasContador = () => {
+  return <h2>Completaste 1 de 3 tareas</h2>;
 };
 
-export { TareaContador };
+export { TareasContador };

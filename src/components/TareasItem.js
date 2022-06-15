@@ -1,22 +1,24 @@
 import React from "react";
+import "./TareasItem.css";
 
 const TareasItem = (props) => {
   return (
-    <li className="tareasLista">
+    <li className="tareasItem">
       <span
-        className={`'Icon Icon-check' ${
+        className={`Icon Icon-check ${
           props.Completado && "Icon-check--active"
         }`}
       >
-        ok Icon-check
+        √
       </span>
       <p
-        className={`listaTareas-p ${
-          props.Completado && "listaTareas-p--completa"
+        className={`tareasItem-p ${
+          props.Completado && "tareasItem-p--completa"
         }`}
       >
         {props.texto}
       </p>
+      <span className="Icon Icon-delete">X</span>
     </li>
   );
 };

@@ -1,6 +1,7 @@
 import React from "react";
+import "./TareasBuscador.css";
 
-const TareaBuscador = () => {
+const TareasBuscador = () => {
   return (
     <div>
       <input className="tareasBuscador" placeholder="Buscar item"></input>
@@ -8,4 +9,4 @@ const TareaBuscador = () => {
   );
 };
 
-export { TareaBuscador };
+export { TareasBuscador };
