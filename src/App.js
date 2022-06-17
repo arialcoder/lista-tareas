@@ -5,11 +5,11 @@ import { CrearTareaBtn } from "./components/CrearTareaBtn";
 import { TareasItem } from "./components/TareasItem";
 import "./styles.css";
 
-const App = () => {
+const App = (props) => {
   const tareas = [
-    { texto: "Estudiar React.js", Completado: true },
-    { texto: "Node.js", Completado: false },
-    { texto: "Crear repositorio github", Completado: false }
+    { texto: "Estudiar React.js", completado: true },
+    { texto: "Node.js", completado: true },
+    { texto: "Crear repositorio github", completado: false }
   ];
   return (
     <>
@@ -22,7 +22,7 @@ const App = () => {
             <TareasItem
               key={tarea.texto}
               texto={tarea.texto}
-              completado={tarea.Completado}
+              completado={tarea.completado}
             />
           ))}
         </TareasLista>

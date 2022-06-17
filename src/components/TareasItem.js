@@ -2,23 +2,32 @@ import React from "react";
 import "./TareasItem.css";
 
 const TareasItem = (props) => {
+  const onCompletado = () => {
+    alert(`Tarea ${props.texto} completa~!!!`);
+  };
+
+  const onDelete = () => {
+    alert("Borraste la tarea: " + props.texto);
+  };
+
   return (
     <li className="tareasItem">
       <span
-        className={`Icon Icon-check ${
-          props.Completado && "Icon-check--active"
+        className={`Icon-check--active ${
+          props.completado && "Icon-check--active"
         }`}
-      >
+        onClick={onCompletado}>
         √
       </span>
       <p
         className={`tareasItem-p ${
-          props.Completado && "tareasItem-p--completa"
-        }`}
-      >
+          props.completado && "tareasItem-p--completa"
+        }`}>
         {props.texto}
       </p>
-      <span className="Icon Icon-delete">X</span>
+      <span className="Icon Icon-delete" onClick={onDelete}>
+        X
+      </span>
     </li>
   );
 };

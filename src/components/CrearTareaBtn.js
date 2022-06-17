@@ -2,6 +2,16 @@ import React from "react";
 import "./CrearTareaBtn.css";
 
 const CrearTareaBtn = () => {
-  return <button className="crearTareaBtn"> + </button>;
+  const onClickBoton = (msg) => {
+    alert(msg);
+  };
+
+  return (
+    <button
+      className="crearTareaBtn"
+      onClick={() => onClickBoton("abrir modal")}>
+      +
+    </button>
+  );
 };
 export { CrearTareaBtn };
