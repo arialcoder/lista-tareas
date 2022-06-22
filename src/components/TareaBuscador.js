@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import "./TareasBuscador.css";
 
-const TareasBuscador = () => {
-  const [estado, setEstado] = useState("");
-
+const TareasBuscador = ({ valorBuscador, setValorBuscador }) => {
   const onSearchChance = (ev) => {
     console.log(ev.target.value);
-    setEstado(ev.target.value);
+    setValorBuscador(ev.target.value);
   };
 
   return (
@@ -14,10 +12,10 @@ const TareasBuscador = () => {
       <input
         className="tareasBuscador"
         placeholder="Buscar item"
-        value={estado}
+        value={valorBuscador}
         onChange={onSearchChance}
       />
-      <p>{estado}</p>
+      <p>{valorBuscador}</p>
     </>
   );
 };
