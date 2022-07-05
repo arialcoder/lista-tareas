@@ -6,8 +6,14 @@ import { CrearTareaBtn } from "./components/CrearTareaBtn";
 import { TareasItem } from "./components/TareasItem";
 import "./styles.css";
 
+const defaultTareas = [
+  { texto: "Estudiar React.js", completado: true },
+  { texto: "Node.js", completado: true },
+  { texto: "Crear repositorio github", completado: false }
+];
+
 const App = (props) => {
-  const [tareas, setTareas] = useState("");
+  const [tareas, setTareas] = useState(defaultTareas);
 
   const [valorBuscador, setValorBuscador] = useState("");
   console.log(props);
@@ -22,18 +28,28 @@ const App = (props) => {
     buscarTareas = tareas;
   } else {
     buscarTareas = tareas.filter((tarea) => {
-      const tareasTexto = tareas.texto.toLocaleLowerCase();
-      const buscardorTexto = valorBuscador.toLocaleLowerCase();
+      const tareasTexto = tarea.texto.toLowerCase();
+      const buscardorTexto = valorBuscador.toLowerCase();
 
       return tareasTexto.includes(buscardorTexto);
     });
   }
 
-  const defaultTareas = [
-    { texto: "Estudiar React.js", completado: true },
-    { texto: "Node.js", completado: true },
-    { texto: "Crear repositorio github", completado: false }
-  ];
+  // funcion busca nuevas tareas
+  const tareaCompleta = (texto) => {
+    const tareasIndex = tareas.findIndex((tarea) => tarea.texto === texto);
+    const newTareas = [...tareas];
+    newTareas[tareasIndex].completado = true;
+    setTareas(newTareas);
+  };
+
+  // funcion borra tareas
+  const tareaBorrada = (texto) => {
+    const tareasIndex = tareas.findIndex((tarea) => tarea.texto === texto);
+    const newTareas = [...tareas];
+    newTareas.splice(tareasIndex, 1);
+    setTareas(newTareas);
+  };
   return (
     <>
       <div className="App">
@@ -44,11 +60,13 @@ const App = (props) => {
           setValorBuscador={setValorBuscador}
         />
         <TareasLista>
-          {defaultTareas.map((tarea) => (
+          {buscarTareas.map((tarea) => (
             <TareasItem
               key={tarea.texto}
               texto={tarea.texto}
               completado={tarea.completado}
+              ontareaCompleta={() => tareaCompleta(tareas.texto)}
+              ontareaBorrada={() => tareaBorrada(tareas.texto)}
             />
           ))}
         </TareasLista>
