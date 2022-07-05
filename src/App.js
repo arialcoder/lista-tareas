@@ -13,7 +13,20 @@ const defaultTareas = [
 ];
 
 const App = (props) => {
-  const [tareas, setTareas] = useState(defaultTareas);
+  const localStorageTareas = localStorage.getItem("TAREAS_V1");
+
+  let parsearTareas;
+
+  if (!localStorageTareas) {
+    localStorage.setItem("TAREAS_V1", JSON.stringify([]));
+    parsearTareas = [];
+  } else {
+    parsearTareas = JSON.parse(localStorageTareas);
+  }
+
+  const [tareas, setTareas] = useState(parsearTareas);
+
+  // const [tareas, setTareas] = useState(defaultTareas);
 
   const [valorBuscador, setValorBuscador] = useState("");
   console.log(props);
@@ -34,13 +47,19 @@ const App = (props) => {
       return tareasTexto.includes(buscardorTexto);
     });
   }
+  // funcion para guardar tareas usando localStorage
+  const guardarTareas = (newTareas) => {
+    const tareasStringify = JSON.stringify(newTareas);
+    localStorage.setItem("TAREAS_V1", tareasStringify);
+    setTareas(newTareas);
+  };
 
   // funcion busca nuevas tareas
   const tareaCompleta = (texto) => {
     const tareasIndex = tareas.findIndex((tarea) => tarea.texto === texto);
     const newTareas = [...tareas];
     newTareas[tareasIndex].completado = true;
-    setTareas(newTareas);
+    guardarTareas(newTareas);
   };
 
   // funcion borra tareas
